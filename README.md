@@ -8,16 +8,6 @@ A dead-simple plain-text file format for tracking gym/lifting workouts.
 WTX is designed to be readable and writable by hand, with no special tooling
 required. See [examples/](examples/) for sample files.
 
-## Example
-
-```
-# Push Day
-
-Bench Press | 4x8 | 60kg | rest 90s
-Overhead Press | 3x10 | 30kg | rest 60s
-Tricep Pushdown | 3x12 | 20kg
-```
-
 ## Format
 
 ### Template format (`.wtt`)
