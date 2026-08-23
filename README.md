@@ -42,19 +42,44 @@ Rules:
 ### Session format (`.wts`)
 
 Same as a template, but each line records what actually happened, and the
-file starts with a date instead of just a name. Metadata lines like `unit:` and
-`description:` work the same way as in templates.
+file starts with a date instead of just a name.
 
 ```
 # Push Day - 2026-08-21
+template: push-day.wtt
+unit: kg
 
-Bench Press | 4x8 | 62.5kg | felt strong
-W | 40kg | 10 
-1 | 40kg | 8
-2 | 30kg | 3
-Overhead Press | 3x9 | 30kg
-Tricep Pushdown | 3x12 | 20kg
+Bench Press | 4x8 | 62.5 | felt strong
+W | 40 | 10
+1 | 60 | 8
+2 | 60 | 8
+3 | 62.5 | 8
+4 | 62.5 | 7
+Overhead Press | 3x9 | 30
+1 | 30 | 9
+2 | 30 | 9
+3 | 30 | 8
+Tricep Pushdown | 3x12 | 20
+1 | 20 | 12
+2 | 20 | 12
+3 | 20 | 11
 ```
+
+Rules:
+
+- First line starting with `#` is the routine name followed by a date, e.g. `# Push Day - 2026-08-21`.
+- Metadata lines are `key: value`.
+- `unit:` sets the weight unit for the file.
+- `template:` names the `.wtt` file this session followed, e.g. `template: push-day.wtt`.
+- `description:` is a free-text summary of the session.
+- Blank lines are ignored.
+- Exercise lines are `Name | SetsxReps | Weight | note`.
+- Weight is a bare number (`60`, not `60kg`).
+- The trailing field on an exercise line is a free-text note, not a rest duration.
+- Each working set gets its own line right after the exercise line: `Label | Weight | Reps`.
+- `Label` is `1`, `2`, ... for a working set — one line is required per working set.
+- `Label` is `W` for an optional warm-up set.
+- Fields are separated by ` | ` (space-pipe-space).
 
 ### Design goals
 
@@ -63,4 +88,5 @@ Tricep Pushdown | 3x12 | 20kg
 
 ## Status
 
-Early draft (v0.1). Feedback and PRs welcome.
+Version 1.0.0
+Feedback and PRs welcome

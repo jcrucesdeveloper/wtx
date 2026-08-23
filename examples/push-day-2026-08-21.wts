@@ -1,7 +1,26 @@
 # Push Day - 2026-08-21
+unit: kg
+template: push-day.wtt
 
-Bench Press | 4x8 | 62.5kg | felt strong
-Overhead Press | 3x9 | 30kg
-Incline Dumbbell Press | 3x10 | 22kg
-Tricep Pushdown | 3x12 | 20kg
-Lateral Raise | 3x15 | 8kg | last set to failure
+Bench Press | 4x8 | 62.5 | felt strong
+W | 40 | 10
+1 | 60 | 8
+2 | 60 | 8
+3 | 62.5 | 8
+4 | 62.5 | 7
+Overhead Press | 3x9 | 30
+1 | 30 | 9
+2 | 30 | 9
+3 | 30 | 8
+Incline Dumbbell Press | 3x10 | 22
+1 | 22 | 10
+2 | 22 | 10
+3 | 22 | 9
+Tricep Pushdown | 3x12 | 20
+1 | 20 | 12
+2 | 20 | 12
+3 | 20 | 11
+Lateral Raise | 3x15 | 8 | last set to failure
+1 | 8 | 15
+2 | 8 | 15
+3 | 8 | 12
