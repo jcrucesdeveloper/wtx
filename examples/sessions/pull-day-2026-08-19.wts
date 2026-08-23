@@ -1,0 +1,30 @@
+# Pull Day - 2026-08-19
+template: pull-day.wtt
+unit: kg
+
+Deadlift | 3x5 | 100 | felt heavy
+1 | 100 | 5
+2 | 100 | 5
+3 | 100 | 4
+Pull Up | 4x8 | 0
+1 | 0 | 8
+2 | 0 | 8
+3 | 0 | 7
+4 | 0 | 6
+Barbell Row | 4x8 | 60
+1 | 60 | 8
+2 | 60 | 8
+3 | 60 | 8
+4 | 60 | 7
+Lat Pulldown | 3x10 | 45
+1 | 45 | 10
+2 | 45 | 10
+3 | 45 | 9
+Seated Cable Row | 3x10 | 50
+1 | 50 | 10
+2 | 50 | 10
+3 | 50 | 10
+Bicep Curl (Dumbbell) | 3x12 | 12
+1 | 12 | 12
+2 | 12 | 12
+3 | 12 | 10

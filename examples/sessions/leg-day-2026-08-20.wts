@@ -1,0 +1,30 @@
+# Leg Day - 2026-08-20
+template: leg-day.wtt
+unit: kg
+
+Squat | 4x6 | 80 | good depth
+1 | 80 | 6
+2 | 80 | 6
+3 | 80 | 6
+4 | 80 | 5
+Romanian Deadlift | 3x10 | 60
+1 | 60 | 10
+2 | 60 | 10
+3 | 60 | 9
+Leg Press | 3x12 | 120
+1 | 120 | 12
+2 | 120 | 12
+3 | 120 | 11
+Walking Lunge | 3x12 | 16
+1 | 16 | 12
+2 | 16 | 12
+3 | 16 | 11
+Leg Curl (Machine) | 3x12 | 35
+1 | 35 | 12
+2 | 35 | 12
+3 | 35 | 11
+Calf Raise | 4x15 | 40 | last set to failure
+1 | 40 | 15
+2 | 40 | 15
+3 | 40 | 15
+4 | 40 | 12

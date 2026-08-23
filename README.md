@@ -6,7 +6,8 @@ A dead-simple plain-text file format for tracking gym/lifting workouts.
 - `.wts` — Workout Session (a logged workout)
 
 WTX is designed to be readable and writable by hand, with no special tooling
-required. See [examples/](examples/) for sample files.
+required. See [examples/templates/](examples/templates/) and
+[examples/sessions/](examples/sessions/) for sample files.
 
 ## Format
 
@@ -89,4 +90,7 @@ Rules:
 ## Status
 
 Version 1.0.0
-Feedback and PRs welcome
+
+## License
+
+[MIT](LICENSE)
