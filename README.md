@@ -15,6 +15,7 @@ required. See [examples/](examples/) for sample files.
 ```
 # Push Day
 unit: kg
+description: Focuses mostly on chest.
 
 Warm up | time 1m30s
 Bench Press | reps 4x8 | 60 | rest 1m30s
@@ -30,6 +31,7 @@ Rules:
 
 - First line starting with `#` is the routine name.
 - Metadata lines are `key: value`, e.g. `unit: kg` sets the weight unit for the whole file.
+- `description:` is an optional metadata line giving a free-text summary of the routine, e.g. `description: Focuses mostly on chest and triceps.`
 - Blank lines are ignored.
 - Exercise lines are `Name | <type> ... | Weight | rest Duration`.
 - Type is `reps 4x8` (rep-based) or `time 1m30s` (time-based, e.g. warm-ups/cardio).
@@ -40,7 +42,8 @@ Rules:
 ### Session format (`.wts`)
 
 Same as a template, but each line records what actually happened, and the
-file starts with a date instead of just a name:
+file starts with a date instead of just a name. Metadata lines like `unit:` and
+`description:` work the same way as in templates.
 
 ```
 # Push Day - 2026-08-21
