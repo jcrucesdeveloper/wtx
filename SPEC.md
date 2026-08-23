@@ -11,20 +11,22 @@ readable and writable by hand, with no special tooling required.
 ## Template format (`.wtt`)
 
 ```
-# Push Day
+# Push Day 
+Warm up | 1m30s
+Bench Press | 4x8 | 60kg | rest 1m30s
+Incline Bench Press (Dumbbbell) | 4x10 | 20kg | rest 2min 30s
+Butterfly (Pec Deck) | 3x10 | 65kg | rest 2min 30s
+Seated Shoulder Press (Machine) | 4x36 | 10 | rest 2m
+Lateral Raise (Dumbbell) | 3x12 | rest 1m 30s
+Tricep Rope Pushdown | 4x10 | 21.25kg
+Running | 15m20s
 
-Bench Press | 4x8 | 60kg | rest 90s
-Overhead Press | 3x10 | 30kg | rest 60s
-Tricep Pushdown | 3x12 | 20kg
 ```
 
 Rules:
 
 - First line starting with `#` is the routine name.
 - Blank lines are ignored.
-- Each exercise is one line: `Name | Sets x Reps | Weight | Notes`
-- `Weight` and `Notes` are optional.
-- Fields are separated by ` | ` (space-pipe-space).
 
 ## Session format (`.wts`)
 
@@ -35,12 +37,13 @@ file starts with a date instead of just a name:
 # Push Day - 2026-08-21
 
 Bench Press | 4x8 | 62.5kg | felt strong
+W | 40kg | 10 
+1 | 40kg | 8
+2 | 30kg | 3
 Overhead Press | 3x9 | 30kg
 Tricep Pushdown | 3x12 | 20kg
 ```
 
 ## Design goals
-
-- Human-first: editable in any text editor, diffable in git.
 - No nesting, no required schema validation to get started.
 - Easy to parse line-by-line in any language.
