@@ -1,7 +1,6 @@
 # WTX Format Spec (v0.1)
 
-WTX is a plain-text format for gym/lifting routines. It's designed to be
-readable and writable by hand, with no special tooling required.
+WTX is a plain-text format for gym/lifting routines. It's designed to be readable and writable by hand, with no special tooling required.
 
 ## File extension
 
@@ -11,22 +10,29 @@ readable and writable by hand, with no special tooling required.
 ## Template format (`.wtt`)
 
 ```
-# Push Day 
-Warm up | 1m30s
-Bench Press | 4x8 | 60kg | rest 1m30s
-Incline Bench Press (Dumbbbell) | 4x10 | 20kg | rest 2min 30s
-Butterfly (Pec Deck) | 3x10 | 65kg | rest 2min 30s
-Seated Shoulder Press (Machine) | 4x36 | 10 | rest 2m
-Lateral Raise (Dumbbell) | 3x12 | rest 1m 30s
-Tricep Rope Pushdown | 4x10 | 21.25kg
-Running | 15m20s
+# Push Day
+unit: kg
 
+Warm up | time 1m30s
+Bench Press | reps 4x8 | 60 | rest 1m30s
+Incline Bench Press (Dumbbell) | reps 4x10 | 20 | rest 2m30s
+Butterfly (Pec Deck) | reps 3x10 | 65 | rest 2m30s
+Seated Shoulder Press (Machine) | reps 4x36 | 10 | rest 2m
+Lateral Raise (Dumbbell) | reps 3x12 | rest 1m30s
+Tricep Rope Pushdown | reps 4x10 | 21.25
+Running | time 15m20s
 ```
 
 Rules:
 
 - First line starting with `#` is the routine name.
+- Metadata lines are `key: value`, e.g. `unit: kg` sets the weight unit for the whole file.
 - Blank lines are ignored.
+- Exercise lines are `Name | <type> ... | Weight | rest Duration`.
+- Type is `reps 4x8` (rep-based) or `time 1m30s` (time-based, e.g. warm-ups/cardio).
+- Weight is a bare number (`60`, not `60kg`) — unit comes from the `unit:` metadata line.
+- Durations are compact, no spaces, no `min` word: `1m30s`, `2m`, `15m20s`.
+- Fields are separated by ` | ` (space-pipe-space).
 
 ## Session format (`.wts`)
 
