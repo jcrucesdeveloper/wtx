@@ -13,7 +13,7 @@ const SET_LABEL_RE = /^(W|\d+)$/;
 const NUMBER_RE = /^-?\d+(\.\d+)?$/;
 const DURATION_RE = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
 
-export class WtxParser {
+export class WorkoutParser {
   /**
    * Parses the contents of a `.wtt` template file.
    *
@@ -22,7 +22,7 @@ export class WtxParser {
    * @throws If the name line or an exercise/metadata line is malformed.
    */
   static parseTemplate(text: string): WorkoutTemplate {
-    return new WorkoutTemplate(WtxParser.parseTemplateRaw(text));
+    return new WorkoutTemplate(WorkoutParser.parseTemplateRaw(text));
   }
 
   /**
@@ -47,7 +47,7 @@ export class WtxParser {
       }
 
       if (line.includes("|")) {
-        exercises.push(WtxParser.parseTemplateExerciseLine(line));
+        exercises.push(WorkoutParser.parseTemplateExerciseLine(line));
         continue;
       }
 
@@ -92,7 +92,7 @@ export class WtxParser {
       if (line === "") continue;
 
       if (line.startsWith("#")) {
-        const sessionName = WtxParser.parseSessionHeader(line);
+        const sessionName = WorkoutParser.parseSessionHeader(line);
         continue;
       }
 
@@ -111,9 +111,9 @@ export class WtxParser {
         if (!current) {
           throw new Error(`Set line with no preceding exercise: "${line}"`);
         }
-        current.loggedSets.push(WtxParser.parseSetLine(line));
+        current.loggedSets.push(WorkoutParser.parseSetLine(line));
       } else {
-        exercises.push({ ...WtxParser.parseSessionExerciseLine(line), loggedSets: [] });
+        exercises.push({ ...WorkoutParser.parseSessionExerciseLine(line), loggedSets: [] });
       }
     }
 
@@ -191,7 +191,7 @@ export class WtxParser {
     }
 
     if (field.startsWith("time ")) {
-      return { kind: "time", seconds: WtxParser.parseDurationInSeconds(field.slice("time ".length)) };
+      return { kind: "time", seconds: WorkoutParser.parseDurationInSeconds(field.slice("time ".length)) };
     }
 
     throw new Error(`Expected a "reps ..." or "time ..." field, got: "${field}"`);
@@ -205,19 +205,19 @@ export class WtxParser {
    * @throws If the name or type is missing, or a trailing field is unrecognized.
    */
   private static parseTemplateExerciseLine(line: string): TemplateExercise {
-    const [name, ...rest] = WtxParser.splitFields(line);
+    const [name, ...rest] = WorkoutParser.splitFields(line);
     if (!name || rest.length === 0) {
       throw new Error(`Invalid exercise line: "${line}"`);
     }
 
-    const exercise: TemplateExercise = { name, type: WtxParser.parseExerciseType(rest[0]) };
+    const exercise: TemplateExercise = { name, type: WorkoutParser.parseExerciseType(rest[0]) };
 
     for (const field of rest.slice(1)) {
       if (field.startsWith("rest ")) {
-        exercise.restSeconds = WtxParser.parseDurationInSeconds(field.slice("rest ".length));
+        exercise.restSeconds = WorkoutParser.parseDurationInSeconds(field.slice("rest ".length));
       } else if (field.startsWith("muscle ")) {
         exercise.muscleGroup = field.slice("muscle ".length).trim();
-      } else if (WtxParser.isNumber(field)) {
+      } else if (WorkoutParser.isNumber(field)) {
         exercise.weight = Number(field);
       } else {
         throw new Error(`Unrecognized field in exercise line: "${field}"`);
@@ -246,7 +246,7 @@ export class WtxParser {
    * @throws If the name, sets-by-reps, or weight field is missing/malformed.
    */
   private static parseSessionExerciseLine(line: string): Omit<SessionExercise, "loggedSets"> {
-    const [name, setsReps, weight, note] = WtxParser.splitFields(line);
+    const [name, setsReps, weight, note] = WorkoutParser.splitFields(line);
     const match = setsReps ? /^(\d+)x(\d+)$/.exec(setsReps) : null;
     if (!name || !match || weight === undefined) {
       throw new Error(`Invalid exercise line: "${line}"`);
@@ -269,7 +269,7 @@ export class WtxParser {
    * @throws If the label, weight, or reps field is missing.
    */
   private static parseSetLine(line: string): SessionSet {
-    const [label, weight, reps] = WtxParser.splitFields(line);
+    const [label, weight, reps] = WorkoutParser.splitFields(line);
     if (!label || weight === undefined || reps === undefined) {
       throw new Error(`Invalid set line: "${line}"`);
     }

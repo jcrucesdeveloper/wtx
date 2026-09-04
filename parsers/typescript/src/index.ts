@@ -1,4 +1,4 @@
 export * from "./types.ts";
-export { WtxParser } from "./WtxParser.ts";
+export { WorkoutParser } from "./WorkoutParser.ts";
 export { WorkoutTemplate } from "./WorkoutTemplate.ts";
 export { WorkoutExercise } from "./WorkoutExercise.ts";

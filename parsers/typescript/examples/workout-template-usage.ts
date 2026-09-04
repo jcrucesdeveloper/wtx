@@ -1,12 +1,12 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { WorkoutExercise, WorkoutTemplate, WtxParser } from "../src/index.ts";
+import { WorkoutExercise, WorkoutTemplate, WorkoutParser } from "../src/index.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const templateText = readFileSync(join(here, "leg-day.wtt"), "utf8");
 
-const workout: WorkoutTemplate = WtxParser.parseTemplate(templateText);
+const workout: WorkoutTemplate = WorkoutParser.parseTemplate(templateText);
 
 // General information
 workout.name; // "Leg Day"
