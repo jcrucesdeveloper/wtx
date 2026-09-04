@@ -1,9 +1,10 @@
 {
-  "name": "wtx-parser",
+  "name": "wtx",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "usage": "node examples/usage.ts"
+    "example:template": "node examples/template-example.ts",
+    "example:session": "node examples/session-example.ts"
   }
 }

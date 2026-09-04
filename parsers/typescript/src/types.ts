@@ -46,8 +46,12 @@ export interface SessionExercise {
 export interface Session {
   name: string;
   date: string;
+  /** `template:` metadata line — the `.wtt` file this session followed. */
   template?: string;
   unit?: string;
+  /** `description:` metadata line. */
   description?: string;
+  /** `notes:` metadata line (alias/companion of `description`). */
+  notes?: string;
   exercises: SessionExercise[];
 }

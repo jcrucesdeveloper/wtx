@@ -6,6 +6,7 @@ import type {
   Template,
   TemplateExercise,
 } from "./types.ts";
+import { WorkoutSession } from "./WorkoutSession.ts";
 import { WorkoutTemplate } from "./WorkoutTemplate.ts";
 
 const META_RE = /^([a-zA-Z_]+):\s*(.*)$/;
@@ -81,7 +82,18 @@ export class WorkoutParser {
    * @returns The parsed session, including logged sets per exercise.
    * @throws If the header line or an exercise/set/metadata line is malformed.
    */
-  static parseSession(text: string): Session {
+  static parseSession(text: string): WorkoutSession {
+    return new WorkoutSession(WorkoutParser.parseSessionRaw(text));
+  }
+
+  /**
+   * Parses a `.wts` file into its raw data shape, before any domain wrapping.
+   *
+   * @param text - Raw file contents.
+   * @returns The plain {@link Session} record.
+   * @throws If the header line or an exercise/set/metadata line is malformed.
+   */
+  static parseSessionRaw(text: string): Session {
     let name: string | undefined;
     let date: string | undefined;
     const meta: Record<string, string> = {};
@@ -92,7 +104,7 @@ export class WorkoutParser {
       if (line === "") continue;
 
       if (line.startsWith("#")) {
-        const sessionName = WorkoutParser.parseSessionHeader(line);
+        ({ name, date } = WorkoutParser.parseSessionHeader(line));
         continue;
       }
 
@@ -127,6 +139,7 @@ export class WorkoutParser {
       template: meta.template,
       unit: meta.unit,
       description: meta.description,
+      notes: meta.notes,
       exercises,
     };
   }
@@ -228,14 +241,19 @@ export class WorkoutParser {
   }
 
   /**
-   * Parses a session's `# Name ` header line.
+   * Parses a session's `# Name - YYYY-MM-DD` header line.
    *
-   * @param line - The header line
-   * @returns The routine name and date.
-   * @throws If the line has no ` - ` separator before the date.
+   * @param line - The header line.
+   * @returns The routine name and ISO date.
+   * @throws If the line has no ` - ` separator before a `YYYY-MM-DD` date.
    */
-  private static parseSessionHeader(line: string): string  {
-    return line.slice(1).trim();
+  private static parseSessionHeader(line: string): { name: string; date: string } {
+    const text = line.slice(1).trim();
+    const match = /^(.+?)\s+-\s+(\d{4}-\d{2}-\d{2})$/.exec(text);
+    if (!match) {
+      throw new Error(`Invalid session header (expected "# Name - YYYY-MM-DD"): "${line}"`);
+    }
+    return { name: match[1].trim(), date: match[2] };
   }
 
   /**
