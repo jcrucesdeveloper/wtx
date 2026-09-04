@@ -1,0 +1,9 @@
+{
+  "name": "wtx-parser",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "usage": "node examples/usage.ts"
+  }
+}
