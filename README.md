@@ -36,10 +36,10 @@ note: failure in every execercise
 
 Warm up | time 1m30s
 Bench Press | reps 4x8 | 60 | rest 1m30s
-W | 40 
-1 | 60  
-2 | 60  
-D | 60  
+W | 40 | 10
+1 | 60 | 10
+2 | 50 | 8  
+D | 60 | 6  
 Incline Bench Press (Dumbbell) | reps 4x10 | 20 | rest 2m30s
 Butterfly (Pec Deck) | reps 3x10 | 65 | rest 2m30s
 Seated Shoulder Press (Machine) | reps 4x36 | 10 | rest 2m
@@ -59,7 +59,7 @@ Rules:
 - Weight is a bare number (`60`, not `60kg`) — unit comes from the `unit:` metadata line.
 - Durations are compact, no spaces, no `min` word: `1m30s`, `2m`, `15m20s`.
 - Fields are separated by ` | ` (space-pipe-space).
-- Optionally, set-specific lines can follow an exercise line to call out individual sets: `Label | Weight`. `Label` is `W` for a warm-up set, a number (`1`, `2`, ...) for a working set, or `D` for a drop set. These lines are optional — specific values per set can be added but aren't required.
+- Optionally, set-specific lines can follow an exercise line to call out individual sets: `Label | Weight | Reps`. `Label` is `W` for a warm-up set, a number (`1`, `2`, ...) for a working set, or `D` for a drop set. These lines are optional — specific values per set can be added but aren't required.
 
 ### Session format (`.wts`)
 
